@@ -1,9 +1,8 @@
 from PIL import Image
 import io
 
-def read_image(file) -> Image.Image:
-    """Read uploaded file as PIL Image."""
-    image = Image.open(io.BytesIO(file))
-    if image.mode != "RGB":
-        image = image.convert("RGB")
-    return image
+def read_image(file_bytes: bytes) -> Image.Image:
+    """
+    Convert uploaded file bytes to PIL Image
+    """
+    return Image.open(io.BytesIO(file_bytes)).convert("RGB")
